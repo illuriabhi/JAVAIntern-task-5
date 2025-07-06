@@ -1,0 +1,90 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2513
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Calibri;\f1\fnil\fcharset134 PingFangSC-Regular;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\ri-6\partightenfactor0
+
+\f0\fs24 \cf0 import java.util.Scanner;\
+import java.util.ArrayList;\
+\
+public class BankSimulation \{\
+    public static void main(String[] args) \{\
+        Scanner sc = new Scanner(System.in);\
+        double balance = 0;\
+        ArrayList<String> transactions = new ArrayList<>();\
+\
+        System.out.print("Enter your name: ");\
+        String name = sc.nextLine();\
+\
+        int choice;\
+        do \{\
+            System.out.println("\\nWelcome, " + name);\
+            System.out.println("1. Deposit");\
+            System.out.println("2. Withdraw");\
+            System.out.println("3. Check Balance");\
+            System.out.println("4. View Transactions");\
+            System.out.println("5. Exit");\
+            System.out.print("Enter your choice: ");\
+            choice = sc.nextInt();\
+\
+            switch (choice) \{\
+                case 1:\
+                    System.out.print("Enter amount to deposit: 
+\f1 \uc0\u8377 
+\f0 ");\
+                    double deposit = sc.nextDouble();\
+                    if (deposit > 0) \{\
+                        balance += deposit;\
+                        transactions.add("Deposited 
+\f1 \uc0\u8377 
+\f0 " + deposit);\
+                        System.out.println("Amount deposited successfully.");\
+                    \} else \{\
+                        System.out.println("Invalid deposit amount.");\
+                    \}\
+                    break;\
+\
+                case 2:\
+                    System.out.print("Enter amount to withdraw: 
+\f1 \uc0\u8377 
+\f0 ");\
+                    double withdraw = sc.nextDouble();\
+                    if (withdraw > 0 && withdraw <= balance) \{\
+                        balance -= withdraw;\
+                        transactions.add("Withdrew 
+\f1 \uc0\u8377 
+\f0 " + withdraw);\
+                        System.out.println("Amount withdrawn successfully.");\
+                    \} else \{\
+                        System.out.println("Invalid or insufficient balance.");\
+                    \}\
+                    break;\
+\
+                case 3:\
+                    System.out.println("Current Balance: 
+\f1 \uc0\u8377 
+\f0 " + balance);\
+                    break;\
+\
+                case 4:\
+                    System.out.println("Transaction History:");\
+                    for (String t : transactions) \{\
+                        System.out.println(t);\
+                    \}\
+                    break;\
+\
+                case 5:\
+                    System.out.println("Thank you for banking with us!");\
+                    break;\
+\
+                default:\
+                    System.out.println("Invalid choice.");\
+            \}\
+        \} while (choice != 5);\
+\
+        sc.close();\
+    \}\
+\}\
+}
